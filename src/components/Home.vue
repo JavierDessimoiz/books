@@ -15,6 +15,7 @@
           <b-icon-search></b-icon-search>
         </span>
       </div>
+      <Books v-bind:bookList ="books"/>
     </div>
   </div>
 </template>
@@ -22,8 +23,10 @@
 <script>
 import { CategoryService } from "../js/services/categoryService.js";
 import { BookService } from "../js/services/bookService.js";
+import Books from './Books.vue'
 export default {
   name: "Home",
+  components: {Books},
   props: {},
   data() {
     return {
@@ -31,7 +34,8 @@ export default {
       error: null,
       category: [],
       categorySelected: null,
-      categoryOptions: []
+      categoryOptions: [],
+      books: []
     };
   },
   mounted() {
@@ -62,8 +66,7 @@ methods: {
       BookService.getListByCategory$(category)
         .then(response => {
           this.loadingBookList = false;
-          //Provide a selection of categories
-          console.log(response.data);
+          this.books= response.data.results.books;
         })
         .catch(error => {
           this.loadingBookList = false;

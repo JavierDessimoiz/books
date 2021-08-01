@@ -1,18 +1,21 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col">{{ book.title }}</div>
-      <div class="col">{{ book.description }}</div>
-      <div class="col">{{ book.author }}</div>
+    <div v-for="(book, index) in bookList" :key="index" class="row">
+      <Book v-bind:book ="book"/>
     </div>
   </div>
+
 </template>
 
-<script>
 
+<script>
+import Book from './Book.vue'
 export default {
-  name: "Book",
-  props: ['book'],
+  name: "Books",
+  props: ['bookList'],
+  components: {
+    Book
+  },
   data() {
     return {
       loading: false
