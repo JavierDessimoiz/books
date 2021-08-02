@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div v-for="(book, index) in bookList" :key="index" class="row">
+  <div>
+    <div v-for="(book, index) in books" :key="index">
       <Book v-bind:book ="book"/>
     </div>
   </div>
@@ -12,7 +12,7 @@
 import Book from './Book.vue'
 export default {
   name: "Books",
-  props: ['bookList'],
+  props: ['books'],
   components: {
     Book
   },
