@@ -9,7 +9,13 @@
     >
       <b-card-text>By {{ book.author }}</b-card-text>
       <b-card-text>{{ book.description }}</b-card-text>
-      <!-- <b-link :href= "https://www.google.com/search?q=" target="_blank" class="card-link">Search</b-link>-->
+      <b-button
+        pill
+        variant="primary"
+        type="button"
+        :href="generateUrl()"
+        target="_blank"
+      >{{ book.title }}</b-button>
     </b-card>
   </div>
 </template>
@@ -24,7 +30,13 @@ export default {
     };
   },
   mounted() {},
-  methods: {}
+  methods: {
+    generateUrl() {
+      return (
+        "https://www.google.com/search?q=" + this.book.title.replace(/\s/g, "+")
+      );
+    }
+  }
 };
 </script>
 
