@@ -1,23 +1,25 @@
 <template>
   <div class="container">
-    <div>
+      <Header />
+      <b-form-group v-if="!loadingCategoryOptions" label="Filter by category:" label-for="select-company">
       <b-form-select
         v-model="categorySelected"
         :options="categoryOptions"
         v-on:change="getBooksbyCategory(categorySelected)"
         size="sm"
         class="mb-3"
-        v-if="!loadingCategoryOptions"
+        
       ></b-form-select>
-      <b-form-select v-else class="spinner-border" role="status">
-        <span class="sr-only"></span>
-      </b-form-select>
+      </b-form-group >
+      <div v-else>
+        <b-spinner variant="primary"></b-spinner>
+      </div>
 
-      <div v-if="categorySelected !== null" class="input-group rounded mb-2">
+      <div v-if="categorySelected != null" class="input-group rounded mb-2">
         <input
           type="search"
           class="form-control rounded"
-          placeholder="Search"
+          placeholder="Search by title"
           aria-label="Search"
           aria-describedby="search-addon"
           v-model="titleSearch"
@@ -26,27 +28,28 @@
           <b-icon-search></b-icon-search>
         </span>
       </div>
-      <div v-if="categorySelected == null || !loadingFilteredBooks">
 
-          <div v-if="this.filteredBooks.length == 1">{{ this.filteredBooks.length }} result</div>
-          <div v-else>{{ this.filteredBooks.length }} results</div>
-
-          <Books v-bind:books="filteredBooks" />
+      <div v-if="categorySelected != null  && !loadingFilteredBooks">
+      <div class="row-center mb-2" >{{ getResultsMessage() }}</div>
+        <Books v-bind:books="filteredBooks" />
       </div>
-      <div v-else class="spinner-border" role="status">
-        <span class="sr-only"></span>
+      <div v-if="loadingFilteredBooks">
+        <b-spinner variant="primary"></b-spinner>
       </div>
+      <Footer />
     </div>
-  </div>
+
 </template>
 
 <script>
 import { CategoryService } from "../js/services/categoryService.js";
 import { BookService } from "../js/services/bookService.js";
 import Books from "./Books.vue";
+import Header from "./Header.vue";
+import Footer from "./Footer.vue";
 export default {
   name: "Home",
-  components: { Books },
+  components: { Books, Header, Footer },
   props: {},
   data() {
     return {
@@ -94,6 +97,10 @@ export default {
         });
     },
     getBooksbyCategory(category) {
+      if (!category) {
+        this.books = [];
+        return;
+      }
       this.loadingFilteredBooks = true;
       BookService.getListByCategory$(category)
         .then(response => {
@@ -104,6 +111,11 @@ export default {
           this.loadingFilteredBooks = false;
           this.error = error;
         });
+    },
+    getResultsMessage() {
+      return this.filteredBooks.length == 1
+        ? this.filteredBooks.length + " Result."
+        : this.filteredBooks.length + " Results.";
     }
   }
 };
@@ -111,7 +123,5 @@ export default {
 
 
 <style scoped>
-h1 {
-  margin: 40px 0 0;
-}
+
 </style>

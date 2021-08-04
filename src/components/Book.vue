@@ -6,16 +6,18 @@
       :img-alt="book.title"
       img-top
       class="mb-2"
+      style="max-height: 600px; overflow: auto;"
     >
-      <b-card-text>By {{ book.author }}</b-card-text>
-      <b-card-text>{{ book.description }}</b-card-text>
-      <b-button
-        pill
-        variant="primary"
-        type="button"
-        :href="generateUrl()"
-        target="_blank"
-      >{{ book.title }}</b-button>
+        <b-card-text>By {{ book.author }}</b-card-text>
+        <b-card-text>{{ book.description }}</b-card-text>
+
+        <b-button
+          pill
+          variant="primary"
+          type="button"
+          :href="generateUrl()"
+          target="_blank"
+        >See on google</b-button>
     </b-card>
   </div>
 </template>
@@ -33,7 +35,10 @@ export default {
   methods: {
     generateUrl() {
       return (
-        "https://www.google.com/search?q=" + this.book.title.replace(/\s/g, "+")
+        "https://www.google.com/search?q=" +
+        this.book.title.replace(/\s/g, "+") +
+        "+" +
+        this.book.author.replace(/\s/g, "+")
       );
     }
   }
