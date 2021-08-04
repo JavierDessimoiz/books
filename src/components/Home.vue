@@ -1,18 +1,19 @@
 <template>
   <div class="container">
+      <div class="container" style="min-height: 80vh;">
       <Header />
-      <b-form-group v-if="!loadingCategoryOptions" label="Filter by category:" label-for="select-company">
-      <b-form-select
-        v-model="categorySelected"
-        :options="categoryOptions"
-        v-on:change="getBooksbyCategory(categorySelected)"
-        size="sm"
-        class="mb-3"
-        
-      ></b-form-select>
-      </b-form-group >
+      <div v-if="!loadingCategoryOptions">
+        <label>Filter by category</label>
+        <b-form-select
+          v-model="categorySelected"
+          :options="categoryOptions"
+          v-on:change="getBooksbyCategory(categorySelected)"
+          size="sm"
+          class="mb-3"
+        ></b-form-select>
+      </div>
       <div v-else>
-        <b-spinner variant="primary"></b-spinner>
+        <b-spinner variant="light"></b-spinner>
       </div>
 
       <div v-if="categorySelected != null" class="input-group rounded mb-2">
@@ -30,15 +31,15 @@
       </div>
 
       <div v-if="categorySelected != null  && !loadingFilteredBooks">
-      <div class="row-center mb-2" >{{ getResultsMessage() }}</div>
+        <div class="row-center mb-2">{{ getResultsMessage() }}</div>
         <Books v-bind:books="filteredBooks" />
       </div>
       <div v-if="loadingFilteredBooks">
-        <b-spinner variant="primary"></b-spinner>
+        <b-spinner variant="light"></b-spinner>
       </div>
-      <Footer />
     </div>
-
+    <Footer />
+  </div>
 </template>
 
 <script>
