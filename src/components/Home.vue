@@ -102,6 +102,7 @@ export default {
         this.books = [];
         return;
       }
+      this.titleSearch = null;
       this.loadingFilteredBooks = true;
       BookService.getListByCategory$(category)
         .then(response => {
