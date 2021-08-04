@@ -69,9 +69,9 @@ export default {
   },
   computed: {
     filteredBooks() {
-      return this.books.filter(book =>
+      return (this.titleSearch!= null ? this.books.filter(book =>
         book.title.toLowerCase().includes(this.titleSearch.toLowerCase())
-      );
+      ) : this.books);
     }
   },
   methods: {
