@@ -1,25 +1,20 @@
 <template>
-  <div>
     <b-card
-      :title="book.title"
-      :img-src="book.book_image"
-      :img-alt="book.title"
-      img-top
-      class="mb-2"
-      style="max-height: 600px; overflow: auto;"
+      class="mb-4"
     >
-        <b-card-text>By {{ book.author }}</b-card-text>
-        <b-card-text>{{ book.description }}</b-card-text>
+        <b-card :img-src="book.book_image" :img-alt="book.title" overlay class="mb-2"></b-card>
+        <b-card-title :title="book.title" class="mb-2"> </b-card-title>
+        <b-card-text class="mb-2">By {{ book.author }}</b-card-text>
+        <b-card-text class="mb-2">{{ book.description }}</b-card-text>
 
-        <b-button
+        <b-button class="btn btn-light btn-sm"
           pill
-          variant="primary"
           type="button"
           :href="generateUrl()"
           target="_blank"
-        >See on google</b-button>
+          
+        >See on google <b-icon icon="link45deg" font-scale="1"></b-icon></b-button>
     </b-card>
-  </div>
 </template>
 
 <script>

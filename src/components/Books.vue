@@ -1,8 +1,8 @@
 <template>
   <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-3" v-for="(book, index) in books" :key="index">
+    <b-card-group class="col-sm-12 col-md-6 col-lg-4" v-for="(book, index) in books" :key="index">
       <Book v-bind:book ="book"/>
-    </div>
+    </b-card-group>  
   </div>
 
 </template>
