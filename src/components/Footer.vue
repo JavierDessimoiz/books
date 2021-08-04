@@ -3,15 +3,16 @@
       <b-button
         href="https://www.linkedin.com/in/javierdessimoiz/"
         target="_blank"
+        variant="outline-primary"
         class="footer-icon"
       >
         <b-icon icon="linkedin" font-scale="1"></b-icon>
       </b-button>
-      <b-button href="https://github.com/JavierDessimoiz" target="_blank" class="footer-icon">
+      <b-button href="https://github.com/JavierDessimoiz" target="_blank" variant="outline-primary" class="footer-icon">
         <b-icon icon="github" font-scale="1"></b-icon>
       </b-button>
 
-      <b-button href="mailto:dessimoiz@gmail.com" target="_blank" class="footer-icon">
+      <b-button href="mailto:dessimoiz@gmail.com" target="_blank" variant="outline-primary" class="footer-icon">
         <b-icon icon="envelope" font-scale="1"></b-icon>
       </b-button>
       </div>
