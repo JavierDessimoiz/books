@@ -7,13 +7,13 @@
         <b-card-text class="mb-2">By {{ book.author }}</b-card-text>
         <b-card-text class="mb-2">{{ book.description }}</b-card-text>
 
-        <b-button class="btn btn-light btn-sm"
+        <b-button class="btn btn-sm"
           pill
           type="button"
           :href="generateUrl()"
           target="_blank"
-          
-        >See on google <b-icon icon="link45deg" font-scale="1"></b-icon></b-button>
+          variant="primary"
+        ><b-icon icon="link45deg" font-scale="1"></b-icon> See on google </b-button>
     </b-card>
 </template>
 
