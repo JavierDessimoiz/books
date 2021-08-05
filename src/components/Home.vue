@@ -1,9 +1,11 @@
 <template>
   <div class="container">
-      <div class="container" style="min-height: 80vh;">
+    <div class="home">
       <Header />
       <div v-if="!loadingCategoryOptions">
-        <div><label>Filter by category</label></div>
+        <div>
+          <label>Filter by category</label>
+        </div>
         <b-form-select
           v-model="categorySelected"
           :options="categoryOptions"
@@ -69,9 +71,11 @@ export default {
   },
   computed: {
     filteredBooks() {
-      return (this.titleSearch!= null ? this.books.filter(book =>
-        book.title.toLowerCase().includes(this.titleSearch.toLowerCase())
-      ) : this.books);
+      return this.titleSearch != null
+        ? this.books.filter(book =>
+            book.title.toLowerCase().includes(this.titleSearch.toLowerCase())
+          )
+        : this.books;
     }
   },
   methods: {
@@ -125,5 +129,7 @@ export default {
 
 
 <style scoped>
-
+.home {
+  min-height: 87vh;
+}
 </style>
