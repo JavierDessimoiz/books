@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="home">
-      <Header />
+    <Header class="header-home" />
+    <div class="body-home">
       <div v-if="!loadingCategoryOptions">
         <div>
           <label>Filter by category</label>
@@ -40,7 +40,7 @@
         <b-spinner variant="light"></b-spinner>
       </div>
     </div>
-    <Footer />
+    <Footer class="footer-home" />
   </div>
 </template>
 
@@ -129,7 +129,13 @@ export default {
 
 
 <style scoped>
-.home {
-  min-height: 87vh;
+.header-home {
+  height: 15vh;
+}
+.body-home {
+  min-height: 75vh;
+}
+.footer-home {
+  height: 10vh;
 }
 </style>
