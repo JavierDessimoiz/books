@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="footer-nav">
       <b-button
         href="https://www.linkedin.com/in/javierdessimoiz/"
         target="_blank"
@@ -29,5 +29,10 @@ export default {
 <style scoped>
 .footer-icon{
   margin: 0 10px;
+}
+
+.footer-nav{
+   padding-top: 10px;
+   padding-bottom: 10px;
 }
 </style>
