@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="display-1">Book reviews</h1>
+    <h1 class="header-title">Book reviews</h1>
   </div>
 </template>
 
@@ -13,5 +13,9 @@ export default {
 
 
 <style scoped>
-
+.header-title {
+    color: #fff;
+    font-weight: 800;
+    padding-top: 20px;
+}
 </style>

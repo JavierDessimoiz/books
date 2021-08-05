@@ -4,7 +4,7 @@
     <div class="body-home">
       <div v-if="!loadingCategoryOptions">
         <div>
-          <label>Filter by category</label>
+          <label class="white-text">Filter by category</label>
         </div>
         <b-form-select
           v-model="categorySelected"
@@ -33,7 +33,7 @@
       </div>
 
       <div v-if="categorySelected != null  && !loadingFilteredBooks">
-        <div class="row-center mb-2">{{ getResultsMessage() }}</div>
+        <div class="white-text">{{ getResultsMessage() }}</div>
         <Books v-bind:books="filteredBooks" />
       </div>
       <div v-if="loadingFilteredBooks">
@@ -138,4 +138,9 @@ export default {
 .footer-home {
   height: 10vh;
 }
+
+.white-text {
+    color: #fff;
+}
+
 </style>
