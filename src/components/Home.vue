@@ -3,7 +3,7 @@
       <div class="container" style="min-height: 80vh;">
       <Header />
       <div v-if="!loadingCategoryOptions">
-        <label>Filter by category</label>
+        <div><label>Filter by category</label></div>
         <b-form-select
           v-model="categorySelected"
           :options="categoryOptions"
